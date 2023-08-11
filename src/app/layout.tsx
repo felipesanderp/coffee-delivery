@@ -1,8 +1,20 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Roboto, Baloo_2 } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'] })
+const roboto = Roboto({ 
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['400', '700'],
+  variable: '--font-roboto'
+})
+
+const baloo2 = Baloo_2({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['700', '800'],
+  variable: '--font-baloo'
+})
 
 export const metadata: Metadata = {
   title: 'Coffee Delivery',
@@ -16,7 +28,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${roboto.variable} ${baloo2.variable}`}>
+        {children}</body>
     </html>
   )
 }
