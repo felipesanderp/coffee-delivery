@@ -5,7 +5,7 @@ import { Icons } from './icons'
 
 export function Header() {
   return (
-    <div className="h-104 mx-auto flex max-w-[1440px] items-center justify-between p-8">
+    <div className="h-104 container flex items-center justify-between p-8">
       <Image src={logo} alt="Coffee Delivery" width={'84'} height={'40'} />
       <div className="flex items-center gap-3">
         <div className="group">

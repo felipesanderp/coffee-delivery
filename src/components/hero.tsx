@@ -5,10 +5,10 @@ import { Icons } from './icons'
 
 export function Hero() {
   return (
-    <div className="mx-auto flex h-[544px] max-w-[1440px] items-center justify-between p-8">
+    <div className="container flex h-[544px] items-center justify-between">
       <div className="flex max-w-xl flex-col gap-16">
         <div className="flex flex-col gap-4">
-          <h1 className="m-0 font-baloo text-5xl leading-[130%]">
+          <h1 className="m-0 font-baloo text-5xl font-extrabold leading-[130%]">
             Encontre o café perfeito para qualquer hora do dia
           </h1>
           <span className="text-xl leading-[130%]">
