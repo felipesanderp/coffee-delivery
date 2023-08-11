@@ -1,3 +1,4 @@
+import { Header } from '@/components/header'
 import './globals.css'
 import type { Metadata } from 'next'
 // eslint-disable-next-line camelcase
@@ -30,6 +31,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${roboto.variable} ${baloo2.variable} bg-zinc-200`}>
+        <Header />
+
         {children}
       </body>
     </html>

@@ -4,6 +4,7 @@
 
 @layer base {
   body {
-    font-family:  'Roboto', san-serif
+    font-family:  'Roboto', san-serif;
+    @apply text-zinc-800
   }
 }
