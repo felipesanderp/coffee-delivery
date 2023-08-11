@@ -30,7 +30,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${roboto.variable} ${baloo2.variable} bg-zinc-200`}>
+      <body className={`${roboto.variable} ${baloo2.variable} bg-zinc-100`}>
         <Header />
 
         {children}
