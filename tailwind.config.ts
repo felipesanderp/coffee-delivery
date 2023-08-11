@@ -10,10 +10,10 @@ const config: Config = {
     extend: {
       fontFamily: {
         sans: ['var(--font-roboto)'],
-        baloo: ['var(--font-baloo)']
+        baloo: ['var(--font-baloo)'],
       },
       colors: {
-       'zinc': {
+        zinc: {
           100: '#FAFAFA',
           200: '#F3F2F2',
           300: '#EDEDED',
@@ -23,18 +23,18 @@ const config: Config = {
           700: '#574D4D',
           800: '#403937',
           900: '#272221',
-       },
-       'purple': {
+        },
+        purple: {
           100: '#EBE5F9',
           500: '#8047F8',
           800: '#4B2995',
-       },
-       'yellow': {
+        },
+        yellow: {
           100: '#F1E9C9',
           500: '#DBAC2C',
           800: '#C47F17',
-       }
-      }
+        },
+      },
     },
   },
   plugins: [],
