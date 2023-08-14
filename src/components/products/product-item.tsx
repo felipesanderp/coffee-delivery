@@ -35,7 +35,13 @@ export function ProductItem({ product }: ProductItem) {
         width={120}
         height={120}
       />
-      <Badge className="mb-1">TRADICIONAL</Badge>
+      <div className="flex items-center gap-2">
+        {product.type.map((type) => (
+          <Badge key={product.id} className="mb-1">
+            {type}
+          </Badge>
+        ))}
+      </div>
       <h3 className="font-baloo text-xl font-semibold">{product.title}</h3>
       <span className="mb-9 text-center text-sm text-zinc-600">
         {product.description}
@@ -43,7 +49,9 @@ export function ProductItem({ product }: ProductItem) {
       <div className="flex items-center justify-between gap-6">
         <div className="flex items-baseline gap-1 font-baloo text-zinc-700">
           <span className="text-sm">R$</span>
-          <span className=" text-2xl font-extrabold">9,90</span>
+          <span className=" text-2xl font-extrabold">
+            {product.price.toFixed(2)}
+          </span>
         </div>
 
         <div className="flex items-center gap-2">
