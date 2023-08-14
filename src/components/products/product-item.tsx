@@ -4,7 +4,6 @@ import Image from 'next/image'
 
 import { Badge } from '../badge'
 import { Icons } from '../icons'
-import { useState } from 'react'
 import { Product } from '@/types/product'
 
 interface ProductItem {
@@ -12,19 +11,19 @@ interface ProductItem {
 }
 
 export function ProductItem({ product }: ProductItem) {
-  const [quantity, setQuantity] = useState<number>(0)
+  // const [quantity, setQuantity] = useState<number>(0)
 
-  function increaseQuantity() {
-    setQuantity(quantity + 1)
-  }
+  // function increaseQuantity() {
+  //   setQuantity(quantity + 1)
+  // }
 
-  function decreaseQuantity() {
-    if (quantity <= 0) {
-      setQuantity(0)
-    } else {
-      setQuantity(quantity - 1)
-    }
-  }
+  // function decreaseQuantity() {
+  //   if (quantity <= 0) {
+  //     setQuantity(0)
+  //   } else {
+  //     setQuantity(quantity - 1)
+  //   }
+  // }
 
   return (
     <div className="mb-10 flex h-80 w-64 flex-col items-center gap-3 rounded-bl-[2.25rem] rounded-br-md rounded-tl-md rounded-tr-[2.25rem] bg-zinc-200 p-4">
@@ -55,7 +54,7 @@ export function ProductItem({ product }: ProductItem) {
         </div>
 
         <div className="flex items-center gap-2">
-          <div className="flex h-9 w-[4.5rem] items-center justify-between rounded-md bg-zinc-400">
+          {/* <div className="flex h-9 w-[4.5rem] items-center justify-between rounded-md bg-zinc-400">
             <button
               className="group flex items-center rounded-md p-1"
               onClick={decreaseQuantity}
@@ -79,9 +78,10 @@ export function ProductItem({ product }: ProductItem) {
                 className="inline stroke-purple-500 group-hover:stroke-purple-800"
               />
             </button>
-          </div>
+          </div> */}
 
-          <button className="flex items-center space-x-1 rounded-md bg-purple-800 p-2 transition-colors hover:bg-purple-500">
+          <button className="flex items-center space-x-2 rounded-md bg-purple-800 p-2 transition-colors hover:bg-purple-500">
+            <span className="text-sm text-zinc-100">Adicionar ao </span>
             <Icons.shoppingCart
               width={22}
               height={22}
