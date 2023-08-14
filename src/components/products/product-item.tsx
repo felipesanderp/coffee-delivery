@@ -5,12 +5,19 @@ import Image from 'next/image'
 import { Badge } from '../badge'
 import { Icons } from '../icons'
 import { Product } from '@/types/product'
+import { useCartStore } from '@/stores/useCartStore'
 
 interface ProductItem {
   product: Product
 }
 
 export function ProductItem({ product }: ProductItem) {
+  const { addToCart } = useCartStore((store) => {
+    return {
+      addToCart: store.addToCart,
+    }
+  })
+
   // const [quantity, setQuantity] = useState<number>(0)
 
   // function increaseQuantity() {
@@ -80,7 +87,10 @@ export function ProductItem({ product }: ProductItem) {
             </button>
           </div> */}
 
-          <button className="flex items-center space-x-2 rounded-md bg-purple-800 p-2 transition-colors hover:bg-purple-500">
+          <button
+            className="flex items-center space-x-2 rounded-md bg-purple-800 p-2 transition-colors hover:bg-purple-500"
+            onClick={() => addToCart(product)}
+          >
             <span className="text-sm text-zinc-100">Adicionar ao </span>
             <Icons.shoppingCart
               width={22}
