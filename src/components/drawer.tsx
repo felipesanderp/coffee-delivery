@@ -8,7 +8,7 @@ export const Drawer = ({ children, isOpen, onCartIconClick }: Props) => {
   return (
     <div className="relative">
       <div
-        className={`fixed right-0 top-0 z-50 h-full w-[30rem] transform bg-zinc-200 text-zinc-800 transition duration-700 ease-in-out ${
+        className={`fixed right-0 top-0 z-50 h-full w-[30rem] transform bg-zinc-100 text-zinc-800 transition duration-700 ease-in-out ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
         style={{
@@ -16,7 +16,7 @@ export const Drawer = ({ children, isOpen, onCartIconClick }: Props) => {
         }}
       >
         <aside className="h-full overflow-y-auto">
-          <header className="flex h-14 items-center justify-end bg-zinc-200 px-4 py-4 text-zinc-800">
+          <header className="flex h-14 items-center justify-end bg-zinc-100 px-4 py-4 text-zinc-800">
             <div>
               <button onClick={onCartIconClick}>Close</button>
             </div>

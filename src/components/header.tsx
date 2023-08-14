@@ -8,6 +8,7 @@ import { Icons } from './icons'
 import { Drawer } from './drawer'
 import useFromStore from '@/hooks/useFromState'
 import { useCartStore } from '@/stores/useCartStore'
+import { Cart } from './cart/cart'
 
 export function Header() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
@@ -51,7 +52,7 @@ export function Header() {
         </div>
       </div>
       <Drawer isOpen={isDrawerOpen} onCartIconClick={handleCartIconClick}>
-        <h1>Cart</h1>
+        <Cart />
       </Drawer>
     </>
   )

@@ -6,6 +6,7 @@ import {
   Coffee,
   Minus,
   Plus,
+  Trash2,
 } from 'lucide-react'
 
 export const Icons = {
@@ -16,4 +17,5 @@ export const Icons = {
   coffee: Coffee,
   minus: Minus,
   plus: Plus,
+  trashCan: Trash2,
 }
