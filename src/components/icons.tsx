@@ -1,4 +1,12 @@
-import { ShoppingCart, MapPin, Timer, Package, Coffee } from 'lucide-react'
+import {
+  ShoppingCart,
+  MapPin,
+  Timer,
+  Package,
+  Coffee,
+  Minus,
+  Plus,
+} from 'lucide-react'
 
 export const Icons = {
   shoppingCart: ShoppingCart,
@@ -6,4 +14,6 @@ export const Icons = {
   timer: Timer,
   package: Package,
   coffee: Coffee,
+  minus: Minus,
+  plus: Plus,
 }
