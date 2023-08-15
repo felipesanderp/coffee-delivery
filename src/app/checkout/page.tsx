@@ -1,9 +1,11 @@
 'use client'
 
-import { CartItem } from '@/components/cart/cart-item'
-import { Separator } from '@/components/separator'
 import useFromStore from '@/hooks/useFromState'
 import { useCartStore } from '@/stores/useCartStore'
+
+import { CartItem } from '@/components/cart/cart-item'
+import { CheckoutForm } from '@/components/checkout-form'
+import { Separator } from '@/components/separator'
 
 export default function Checkout() {
   const cart = useFromStore(useCartStore, (store) => store.cart)
@@ -22,7 +24,9 @@ export default function Checkout() {
         <h3 className="font-baloo text-lg font-bold text-zinc-800">
           Complete seu pedido
         </h3>
-        <div className="flex h-[37rem] items-center rounded-md bg-zinc-200"></div>
+        <div className="flex flex-col">
+          <CheckoutForm />
+        </div>
       </div>
 
       <div className="flex flex-col gap-4">

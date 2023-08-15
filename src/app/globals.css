@@ -7,4 +7,17 @@
     font-family:  'Roboto', san-serif;
     @apply text-zinc-800
   }
+
+  input::-webkit-input-placeholder {
+    text-align: end;
+    -moz-placeholder: center;
+  }
+
+  input[type='number']::-webkit-outer-spin-button,
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number'] {
+    -webkit-appearance: none;
+    margin: 0;
+    -moz-appearance: textfield !important;
+  }
 }
