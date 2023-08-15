@@ -9,6 +9,7 @@ import { Drawer } from './drawer'
 import useFromStore from '@/hooks/useFromState'
 import { useCartStore } from '@/stores/useCartStore'
 import { Cart } from './cart/cart'
+import Link from 'next/link'
 
 export function Header() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
@@ -22,7 +23,9 @@ export function Header() {
   return (
     <>
       <div className="h-104 container flex items-center justify-between p-8">
-        <Image src={logo} alt="Coffee Delivery" width={'84'} height={'40'} />
+        <Link href="/">
+          <Image src={logo} alt="Coffee Delivery" width={'84'} height={'40'} />
+        </Link>
         <div className="flex items-center gap-3">
           <div className="group">
             <button className="flex items-center gap-2 rounded-md bg-purple-100 p-2 text-sm text-purple-800 group-hover:bg-purple-500 group-hover:text-purple-100">

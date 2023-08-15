@@ -1,9 +1,15 @@
+'use client'
+
+import { useRouter } from 'next/navigation'
+
 import useFromStore from '@/hooks/useFromState'
 import { useCartStore } from '@/stores/useCartStore'
+
 import { CartItem } from './cart-iem'
 import { Separator } from '../separator'
 
 export function Cart() {
+  const router = useRouter()
   const cart = useFromStore(useCartStore, (store) => store.cart)
 
   let total = 0
@@ -34,7 +40,10 @@ export function Cart() {
         </span>
       </div>
 
-      <button className="flex h-10 items-center justify-center  rounded-md bg-yellow-500 p-6 text-white transition-colors hover:bg-yellow-800">
+      <button
+        className="flex h-10 items-center justify-center  rounded-md bg-yellow-500 p-6 text-white transition-colors hover:bg-yellow-800"
+        onClick={() => router.push('/checkout')}
+      >
         FINALIZAR PEDIDO
       </button>
     </section>
