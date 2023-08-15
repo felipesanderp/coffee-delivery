@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import useFromStore from '@/hooks/useFromState'
 import { useCartStore } from '@/stores/useCartStore'
 
-import { CartItem } from './cart-iem'
+import { CartItem } from './cart-item'
 import { Separator } from '../separator'
 
 export function Cart() {
@@ -32,7 +32,9 @@ export function Cart() {
       ) : (
         ''
       )}
+
       <Separator />
+
       <div className="flex items-center justify-between">
         <span className="text-xl font-bold text-zinc-800">Total:</span>
         <span className="text-xl font-bold text-zinc-800">

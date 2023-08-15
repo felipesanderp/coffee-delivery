@@ -17,11 +17,11 @@ export function CartItem({ product }: CartItemProps) {
 
   return (
     <li>
-      <div className="flex  justify-between gap-8">
+      <div className="flex w-96 justify-between gap-8">
         <Image src={product.image} alt={product.title} width={64} height={64} />
         <div className="flex flex-col gap-2">
           <h3 className="text-base text-zinc-800">{product.title}</h3>
-          <div className="flex items-center justify-between gap-6">
+          <div className="flex items-center justify-between gap-2">
             <div className="flex h-8 w-[4.5rem] items-center justify-between rounded-md bg-zinc-400">
               <button
                 className="group flex items-center rounded-md p-1"
@@ -61,7 +61,7 @@ export function CartItem({ product }: CartItemProps) {
           </div>
         </div>
 
-        <div className="flex gap-1  text-zinc-700">
+        <div className="flex gap-1 text-zinc-700">
           <span className="text-base font-bold">
             R$ {product.price.toFixed(2)}
           </span>

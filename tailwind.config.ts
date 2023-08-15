@@ -15,6 +15,9 @@ const config: Config = {
       },
     },
     extend: {
+      gridTemplateColumns: {
+        checkout: '52.5rem 30rem',
+      },
       fontFamily: {
         sans: ['var(--font-roboto)'],
         baloo: ['var(--font-baloo)'],
