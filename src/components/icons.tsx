@@ -8,6 +8,9 @@ import {
   Plus,
   Trash2,
   DollarSign,
+  CreditCard,
+  Banknote,
+  Landmark,
 } from 'lucide-react'
 
 export const Icons = {
@@ -20,4 +23,7 @@ export const Icons = {
   plus: Plus,
   trashCan: Trash2,
   dollar: DollarSign,
+  creditCard: CreditCard,
+  money: Banknote,
+  bank: Landmark,
 }
