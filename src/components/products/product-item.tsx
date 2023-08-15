@@ -42,8 +42,8 @@ export function ProductItem({ product }: ProductItem) {
         height={120}
       />
       <div className="flex items-center gap-2">
-        {product.type.map((type) => (
-          <Badge key={product.id} className="mb-1">
+        {product.type.map((type, index) => (
+          <Badge key={index} className="mb-1">
             {type}
           </Badge>
         ))}

@@ -16,11 +16,11 @@ export function Cart() {
 
   return (
     <section className="flex flex-col gap-6">
-      <h3>Carrinho de Compras</h3>
+      <h3 className="font-baloo text-lg font-bold">Carrinho de Compras</h3>
       {cart && cart.length > 0 ? (
         <ul className="flex h-full w-full flex-col items-center gap-3 rounded-bl-[2.25rem] rounded-br-md rounded-tl-md rounded-tr-[2.25rem] bg-zinc-200 p-4">
-          {cart?.map((product) => (
-            <CartItem key={product.id} product={product} />
+          {cart?.map((product, index) => (
+            <CartItem key={index} product={product} />
           ))}
         </ul>
       ) : (
