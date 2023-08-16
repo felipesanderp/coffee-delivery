@@ -1,140 +1,263 @@
-import { Icons } from './icons'
-import { Input } from './ui/input'
-import { Label } from './ui/label'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import * as z from 'zod'
+
+import { Icons } from '@/components/icons'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+} from '@/components/ui/form'
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
+
+const FormSchema = z.object({
+  cep: z.string(),
+  street: z.string(),
+  number: z.string(),
+  complement: z.string().optional(),
+  neighborhood: z.string(),
+  city: z.string(),
+  uf: z.string().max(2),
+  payment_type: z.enum(['credit_card', 'debit_card', 'money']),
+})
 
 export function CheckoutForm() {
+  const form = useForm<z.infer<typeof FormSchema>>({
+    resolver: zodResolver(FormSchema),
+    defaultValues: {
+      cep: '',
+      street: '',
+      number: '',
+      complement: '',
+      neighborhood: '',
+      city: '',
+      uf: '',
+      payment_type: 'credit_card',
+    },
+  })
+
+  function onSubmit(data: z.infer<typeof FormSchema>) {
+    console.log(data)
+  }
+
   return (
-    <form className="flex flex-col gap-3">
-      <div className="flex h-[23.25rem] flex-col gap-8 rounded-md bg-zinc-200 p-10">
-        <div className="flex gap-2">
-          <Icons.mapPin className="stroke-yellow-800" size={22} />
-          <div>
-            <p className="leading-[130%]">Endereço de Entrega</p>
-            <span className="text-sm leading-[130%] text-zinc-700">
-              Informe o endereço onde deseja receber seu pedido
-            </span>
+    <Form {...form}>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="flex flex-col gap-3"
+      >
+        <div className="flex h-[23.25rem] flex-col gap-8 rounded-md bg-zinc-200 p-10">
+          <div className="flex gap-2">
+            <Icons.mapPin className="stroke-yellow-800" size={22} />
+            <div>
+              <p className="leading-[130%]">Endereço de Entrega</p>
+              <span className="text-sm leading-[130%] text-zinc-700">
+                Informe o endereço onde deseja receber seu pedido
+              </span>
+            </div>
           </div>
-        </div>
 
-        <div className="flex flex-col gap-4">
-          <div className="relative">
-            <Input
-              id="cep"
-              type="text"
-              className="peer block w-52"
-              placeholder=" "
+          <div className="flex flex-col gap-4">
+            <FormField
+              control={form.control}
+              name="cep"
+              render={({ field }) => (
+                <FormItem className="relative">
+                  <FormControl>
+                    <Input
+                      type="text"
+                      className="peer block w-52"
+                      placeholder=" "
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormLabel className="absolute left-2 top-2 z-10 origin-[0] -translate-y-4 scale-75 transform bg-zinc-300 text-sm text-zinc-600 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-yellow-800">
+                    CEP
+                  </FormLabel>
+                </FormItem>
+              )}
             />
-            <Label
-              htmlFor="cep"
-              className="absolute left-2 top-2 z-10 origin-[0] -translate-y-4 scale-75 transform bg-zinc-300 text-sm text-zinc-600 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-yellow-800"
-            >
-              CEP
-            </Label>
-          </div>
-          <div className="relative">
-            <Input
-              id="street"
-              type="text"
-              className="peer block"
-              placeholder=" "
+            <FormField
+              control={form.control}
+              name="street"
+              render={({ field }) => (
+                <FormItem className="relative">
+                  <FormControl>
+                    <Input
+                      type="text"
+                      className="peer block"
+                      placeholder=" "
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormLabel className="absolute left-2 top-2 z-10 origin-[0] -translate-y-4 scale-75 transform bg-zinc-300 text-sm text-zinc-600 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-yellow-800">
+                    Rua
+                  </FormLabel>
+                </FormItem>
+              )}
             />
-            <Label
-              htmlFor="street"
-              className="absolute left-2 top-2 z-10 origin-[0] -translate-y-4 scale-75 transform bg-zinc-300 text-sm text-zinc-600 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-yellow-800"
-            >
-              Rua
-            </Label>
-          </div>
 
-          <div className="flex items-center gap-3">
-            <div className="relative">
-              <Input
-                id="number"
-                type="number"
-                className="peer block w-52"
-                placeholder=" "
+            <div className="flex items-center gap-3">
+              <FormField
+                control={form.control}
+                name="number"
+                render={({ field }) => (
+                  <FormItem className="relative">
+                    <FormControl>
+                      <Input
+                        type="text"
+                        className="peer block w-52"
+                        placeholder=" "
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormLabel className="absolute left-2 top-2 z-10 origin-[0] -translate-y-4 scale-75 transform bg-zinc-300 text-sm text-zinc-600 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-yellow-800">
+                      Número
+                    </FormLabel>
+                  </FormItem>
+                )}
               />
-              <Label
-                htmlFor="number"
-                className="absolute left-2 top-2 z-10 origin-[0] -translate-y-4 scale-75 transform bg-zinc-300 text-sm text-zinc-600 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-yellow-800"
-              >
-                Número
-              </Label>
-            </div>
-            <div className="relative w-full">
-              <Input
-                id="complement"
-                type="text"
-                placeholder="Opcional"
-                className="peer block placeholder:text-xs placeholder:italic"
+              <FormField
+                control={form.control}
+                name="complement"
+                render={({ field }) => (
+                  <FormItem className="relative w-full">
+                    <FormControl>
+                      <Input
+                        type="text"
+                        className="peer block placeholder:text-xs placeholder:italic"
+                        placeholder="Opcional"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormLabel className="absolute left-2 top-2 z-10 origin-[0] -translate-y-4 scale-75 transform bg-zinc-300 text-sm text-zinc-600 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-yellow-800">
+                      Complemento
+                    </FormLabel>
+                  </FormItem>
+                )}
               />
-              <Label
-                htmlFor="complement"
-                className="absolute left-2 top-2 z-10 origin-[0] -translate-y-4 scale-75 transform bg-zinc-300 text-sm text-zinc-600 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-yellow-800"
-              >
-                Complemento
-              </Label>
             </div>
-          </div>
 
-          <div className="flex items-center gap-3">
-            <div className="relative">
-              <Input
-                id="neighborhood"
-                type="text"
-                className="peer block w-52"
-                placeholder=" "
+            <div className="flex items-center gap-3">
+              <FormField
+                control={form.control}
+                name="neighborhood"
+                render={({ field }) => (
+                  <FormItem className="relative">
+                    <FormControl>
+                      <Input
+                        type="text"
+                        className="peer block w-52"
+                        placeholder=" "
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormLabel className="absolute left-2 top-2 z-10 origin-[0] -translate-y-4 scale-75 transform bg-zinc-300 text-sm text-zinc-600 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-yellow-800">
+                      Bairro
+                    </FormLabel>
+                  </FormItem>
+                )}
               />
-              <Label
-                htmlFor="neighborhood"
-                className="absolute left-2 top-2 z-10 origin-[0] -translate-y-4 scale-75 transform bg-zinc-300 text-sm text-zinc-600 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-yellow-800"
-              >
-                Bairro
-              </Label>
-            </div>
-            <div className="relative w-full">
-              <Input
-                id="city"
-                type="text"
-                placeholder=" "
-                className="peer block"
+
+              <FormField
+                control={form.control}
+                name="city"
+                render={({ field }) => (
+                  <FormItem className="relative w-full">
+                    <FormControl>
+                      <Input
+                        type="text"
+                        className="peer block"
+                        placeholder=" "
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormLabel className="absolute left-2 top-2 z-10 origin-[0] -translate-y-4 scale-75 transform bg-zinc-300 text-sm text-zinc-600 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-yellow-800">
+                      Cidade
+                    </FormLabel>
+                  </FormItem>
+                )}
               />
-              <Label
-                htmlFor="city"
-                className="absolute left-2 top-2 z-10 origin-[0] -translate-y-4 scale-75 transform bg-zinc-300 text-sm text-zinc-600 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-yellow-800"
-              >
-                Cidade
-              </Label>
-            </div>
-            <div className="relative">
-              <Input
-                id="uf"
-                type="text"
-                className="peer block w-16"
-                placeholder=" "
+              <FormField
+                control={form.control}
+                name="uf"
+                render={({ field }) => (
+                  <FormItem className="relative">
+                    <FormControl>
+                      <Input
+                        type="text"
+                        className="peer block w-16"
+                        placeholder=" "
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormLabel className="absolute left-2 top-2 z-10 origin-[0] -translate-y-4 scale-75 transform bg-zinc-300 text-sm text-zinc-600 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-yellow-800">
+                      UF
+                    </FormLabel>
+                  </FormItem>
+                )}
               />
-              <Label
-                htmlFor="uf"
-                className="absolute left-2 top-2 z-10 origin-[0] -translate-y-4 scale-75 transform bg-zinc-300 text-sm text-zinc-600 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-yellow-800"
-              >
-                UF
-              </Label>
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="h-[13rem] rounded-md bg-zinc-200 p-10">
-        <div className="flex gap-2">
-          <Icons.dollar className="stroke-purple-500" size={22} />
-          <div>
-            <p className="leading-[130%]">Pagamento</p>
-            <span className="text-sm leading-[130%] text-zinc-700">
-              O pagamento é feito na entrega. Escolha a forma que deseja pagar
-            </span>
+        <div className="flex h-[13rem] flex-col gap-8 rounded-md bg-zinc-200 p-10">
+          <div className="flex gap-2">
+            <Icons.dollar className="stroke-purple-500" size={22} />
+            <div>
+              <p className="leading-[130%]">Pagamento</p>
+              <span className="text-sm leading-[130%] text-zinc-700">
+                O pagamento é feito na entrega. Escolha a forma que deseja pagar
+              </span>
+            </div>
           </div>
+          <FormField
+            control={form.control}
+            name="payment_type"
+            render={({ field }) => (
+              <FormControl>
+                <RadioGroup
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                  className="grid grid-cols-3 gap-4"
+                >
+                  <FormControl>
+                    <Label className="flex items-center gap-3 rounded-md border bg-zinc-400 p-4 hover:bg-zinc-500 [&:has([data-state=checked])]:border-purple-500 [&:has([data-state=checked])]:bg-purple-100">
+                      <RadioGroupItem value="credit_card" className="sr-only" />
+                      <Icons.creditCard
+                        size={22}
+                        className="stroke-purple-500"
+                      />
+                      CARTÃO DE CRÉDITO
+                    </Label>
+                  </FormControl>
+
+                  <FormControl>
+                    <Label className="flex items-center gap-3 rounded-md border bg-zinc-400 p-4 hover:bg-zinc-500 [&:has([data-state=checked])]:border-purple-500 [&:has([data-state=checked])]:bg-purple-100">
+                      <RadioGroupItem value="debit_card" className="sr-only" />
+                      <Icons.bank size={22} className="stroke-purple-500" />
+                      CARTÃO DE DÉBITO
+                    </Label>
+                  </FormControl>
+
+                  <FormControl>
+                    <Label className="flex items-center gap-3 rounded-md border bg-zinc-400 p-4 hover:bg-zinc-500 [&:has([data-state=checked])]:border-purple-500 [&:has([data-state=checked])]:bg-purple-100">
+                      <RadioGroupItem value="money" className="sr-only" />
+                      <Icons.money size={22} className="stroke-purple-500" />
+                      DINHEIRO
+                    </Label>
+                  </FormControl>
+                </RadioGroup>
+              </FormControl>
+            )}
+          />
         </div>
-      </div>
-    </form>
+        <button type="submit">ENVIAR</button>
+      </form>
+    </Form>
   )
 }
