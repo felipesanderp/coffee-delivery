@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 
-import { Badge } from '../badge'
+import { Badge } from '@/components/ui/badge'
 import { Icons } from '../icons'
 import { Product } from '@/types/product'
 import { useCartStore } from '@/stores/useCartStore'

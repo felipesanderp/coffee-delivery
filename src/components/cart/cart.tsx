@@ -6,7 +6,7 @@ import useFromStore from '@/hooks/useFromState'
 import { useCartStore } from '@/stores/useCartStore'
 
 import { CartItem } from './cart-item'
-import { Separator } from '../separator'
+import { Separator } from '@/components/ui/separator'
 
 export function Cart() {
   const router = useRouter()
