@@ -14,6 +14,7 @@ interface Actions {
   addToCart: (Item: Product) => void
   removeFromCart: (Item: Product) => void
   updateQuantity: (Item: Product, action: 'increase' | 'decrease') => void
+  reset: () => void
 }
 
 const INITIAL_STATE: State = {
@@ -95,6 +96,10 @@ export const useCartStore = create(
             }))
           }
         }
+      },
+
+      reset: () => {
+        set(INITIAL_STATE)
       },
     }),
     {

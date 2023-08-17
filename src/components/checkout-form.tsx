@@ -14,6 +14,7 @@ import {
 } from '@/components/ui/form'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { useRouter } from 'next/navigation'
+import { useCartStore } from '@/stores/useCartStore'
 
 const FormSchema = z.object({
   cep: z.string(),
@@ -27,6 +28,11 @@ const FormSchema = z.object({
 })
 
 export function CheckoutForm() {
+  const { reset } = useCartStore((store) => {
+    return {
+      reset: store.reset,
+    }
+  })
   const router = useRouter()
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -46,6 +52,8 @@ export function CheckoutForm() {
     router.push(
       `/confirmed-order/?cep=${data.cep}&street=${data.street}&number=${data.number}&complement=${data.complement}&neighborhood=${data.neighborhood}&city=${data.city}&uf=${data.uf}&payment_method=${data.payment_type}`,
     )
+
+    reset()
   }
 
   return (
