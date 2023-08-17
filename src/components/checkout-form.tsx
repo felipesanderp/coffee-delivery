@@ -49,6 +49,7 @@ export function CheckoutForm() {
       <form
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col gap-3"
+        id="checkout-form"
       >
         <div className="flex h-[23.25rem] flex-col gap-8 rounded-md bg-zinc-200 p-10">
           <div className="flex gap-2">
@@ -256,7 +257,6 @@ export function CheckoutForm() {
             )}
           />
         </div>
-        <button type="submit">ENVIAR</button>
       </form>
     </Form>
   )

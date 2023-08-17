@@ -53,7 +53,8 @@ export default function Checkout() {
 
           <button
             className="flex h-10 w-96 items-center justify-center rounded-md bg-yellow-500 p-6 text-white transition-colors hover:bg-yellow-800"
-            // onClick={() => router.push('/checkout')}
+            type="submit"
+            form="checkout-form"
           >
             CONFIRMAR PEDIDO
           </button>
