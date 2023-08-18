@@ -6,12 +6,15 @@ import { Badge } from '@/components/ui/badge'
 import { Icons } from '../icons'
 import { Product } from '@/types/product'
 import { useCartStore } from '@/stores/useCartStore'
+import { useState } from 'react'
 
 interface ProductItem {
   product: Product
 }
 
 export function ProductItem({ product }: ProductItem) {
+  const [effect, setEffect] = useState(false)
+
   const { addToCart } = useCartStore((store) => {
     return {
       addToCart: store.addToCart,
@@ -88,8 +91,13 @@ export function ProductItem({ product }: ProductItem) {
           </div> */}
 
           <button
-            className="flex items-center space-x-2 rounded-md bg-purple-800 p-2 transition-colors duration-300 hover:bg-purple-500"
-            onClick={() => addToCart(product)}
+            className={`${
+              effect && 'animate-wiggle'
+            } flex items-center space-x-2 rounded-md bg-purple-800 p-2 transition-colors duration-300 hover:bg-purple-500`}
+            onClick={() => {
+              addToCart(product)
+              setEffect(true)
+            }}
           >
             <span className="text-sm text-zinc-100">Adicionar ao </span>
             <Icons.shoppingCart
