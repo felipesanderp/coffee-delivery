@@ -20,6 +20,8 @@ export function Cart() {
     )
   }
 
+  const confirmOrderButtonDisabled = cart && cart?.length <= 0
+
   return (
     <section className="flex flex-col gap-6">
       <h3 className="font-baloo text-lg font-bold">Carrinho de Compras</h3>
@@ -30,21 +32,26 @@ export function Cart() {
           ))}
         </ul>
       ) : (
-        ''
+        <span>Carrinho de compras vazio!</span>
       )}
 
       <Separator />
 
-      <div className="flex items-center justify-between">
-        <span className="text-xl font-bold text-zinc-800">Total:</span>
-        <span className="text-xl font-bold text-zinc-800">
-          R$ {total.toFixed(2)}
-        </span>
-      </div>
+      {cart && cart.length > 0 ? (
+        <div className="flex items-center justify-between">
+          <span className="text-xl font-bold text-zinc-800">Total:</span>
+          <span className="text-xl font-bold text-zinc-800">
+            R$ {total.toFixed(2)}
+          </span>
+        </div>
+      ) : (
+        ''
+      )}
 
       <button
-        className="flex h-10 items-center justify-center  rounded-md bg-yellow-500 p-6 text-white transition-colors hover:bg-yellow-800"
+        className="flex h-10 items-center justify-center  rounded-md bg-yellow-500 p-6 text-white transition-colors hover:bg-yellow-800 disabled:cursor-not-allowed disabled:bg-yellow-800/70"
         onClick={() => router.push('/checkout')}
+        disabled={confirmOrderButtonDisabled}
       >
         FINALIZAR PEDIDO
       </button>
