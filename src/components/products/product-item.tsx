@@ -33,7 +33,7 @@ export function ProductItem({ product }: ProductItem) {
   // }
 
   return (
-    <div className="mb-10 flex h-80 w-64 flex-col items-center gap-3 rounded-bl-[2.25rem] rounded-br-md rounded-tl-md rounded-tr-[2.25rem] bg-zinc-200 p-4">
+    <div className="mb-10 flex h-80 w-64 transform flex-col items-center gap-3 rounded-bl-[2.25rem] rounded-br-md rounded-tl-md rounded-tr-[2.25rem] bg-zinc-200 p-4 transition duration-500 hover:scale-110">
       <Image
         src={product.image}
         alt={product.title}
@@ -88,7 +88,7 @@ export function ProductItem({ product }: ProductItem) {
           </div> */}
 
           <button
-            className="flex items-center space-x-2 rounded-md bg-purple-800 p-2 transition-colors hover:bg-purple-500"
+            className="flex items-center space-x-2 rounded-md bg-purple-800 p-2 transition-colors duration-300 hover:bg-purple-500"
             onClick={() => addToCart(product)}
           >
             <span className="text-sm text-zinc-100">Adicionar ao </span>
