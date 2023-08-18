@@ -1,25 +1,13 @@
-'use client'
-
-import { useState } from 'react'
 import Image from 'next/image'
 
 import logo from '@/assets/logo.png'
-import { Icons } from './icons'
-import { Drawer } from './drawer'
-import useFromStore from '@/hooks/useFromState'
-import { useCartStore } from '@/stores/useCartStore'
-import { Cart } from './cart/cart'
+
+import { Icons } from '@/components/icons'
+import { Drawer } from '@/components/drawer'
+
 import Link from 'next/link'
 
 export function Header() {
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false)
-
-  const cart = useFromStore(useCartStore, (state) => state.cart)
-
-  const handleCartIconClick = () => {
-    setIsDrawerOpen(!isDrawerOpen)
-  }
-
   return (
     <>
       <div className="h-104 container flex items-center justify-between p-8">
@@ -38,25 +26,10 @@ export function Header() {
             </button>
           </div>
           <div className="group relative">
-            <button
-              className="flex items-center rounded-md bg-yellow-100 p-2 group-hover:bg-yellow-500"
-              onClick={handleCartIconClick}
-            >
-              <Icons.shoppingCart
-                width={22}
-                height={22}
-                className="fill-yellow-500 stroke-yellow-500 group-hover:fill-yellow-100 group-hover:stroke-yellow-100"
-              />
-              <div className="absolute -mt-9 ml-4 h-5 w-5 rounded-full bg-yellow-800 text-sm text-white">
-                {cart?.length}
-              </div>
-            </button>
+            <Drawer />
           </div>
         </div>
       </div>
-      <Drawer isOpen={isDrawerOpen} onCartIconClick={handleCartIconClick}>
-        <Cart />
-      </Drawer>
     </>
   )
 }
