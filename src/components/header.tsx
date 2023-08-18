@@ -1,11 +1,10 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 import logo from '@/assets/logo.png'
 
 import { Icons } from '@/components/icons'
 import { Drawer } from '@/components/drawer'
-
-import Link from 'next/link'
 
 export function Header() {
   return (
