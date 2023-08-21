@@ -46,7 +46,7 @@ export function CitiesCombobox() {
     }
 
     getDistricts()
-  }, [district])
+  }, [])
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
